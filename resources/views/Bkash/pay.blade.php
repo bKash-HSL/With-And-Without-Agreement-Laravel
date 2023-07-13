@@ -115,13 +115,12 @@
         </div>
     </div>
 
-    <div>
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-    </div>
+    @if(request()->has('error'))
+        <div class="alert alert-danger">
+            {{ request()->get('error') }}
+        </div>
+    @endif
+    
 
 
     <script>
@@ -163,7 +162,8 @@
                     sessionStorage.setItem('error', errorMessage);
 
                     // Redirect back to the original page
-                    window.history.back();
+                    window.location.replace("{{ route('url-pay') }}");
+                    
                     return; // Stop execution if agreementID is not provided
                 }
 
@@ -197,7 +197,7 @@
                     sessionStorage.setItem('error', errorMessage);
 
                     // Redirect back to the original page
-                    window.history.back();
+                    window.location.replace("{{ route('url-pay') }}");
                     return; // Stop execution if amount is not provided
 
                 }
@@ -234,7 +234,7 @@
                     sessionStorage.setItem('error', errorMessage);
 
                     // Redirect back to the original page
-                    window.history.back();
+                    window.location.replace("{{ route('url-pay') }}");
                     return; // Stop execution if amount is not provided
 
                 }

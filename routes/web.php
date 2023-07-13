@@ -19,6 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 // Payment
 Route::get('/bkash/pay', [BkashController::class, 'payment'])->name('url-pay');
 Route::post('/bkash/create', [BkashController::class, 'createPayment'])->name('url-payment-create');

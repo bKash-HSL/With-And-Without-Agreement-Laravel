@@ -126,7 +126,7 @@ class BkashController extends Controller
 
         $res_array = json_decode($response,true);
         
-        return $res_array['statusCode'];
+        return $res_array['agreementStatus'];
     }
 
     public function createPayment(Request $request)
@@ -139,9 +139,9 @@ class BkashController extends Controller
         $mode = '0011';
 
         if($request->agreementID){
-            $statusCode = $this->queryAgreement($request->agreementID);
+            $agreementStatus = $this->queryAgreement($request->agreementID);
 
-            if($statusCode == '0000'){
+            if($agreementStatus == 'Completed'){
                 $mode = '0001';
                 $agreementID = $request->agreementID;
             }else{
